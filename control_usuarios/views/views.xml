@@ -1,0 +1,346 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="control_usuarios.list">
+      <field name="name">controlUsuarios list</field>
+      <field name="model">control_usuarios.control_usuarios</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="control_usuarios.action_window">
+      <field name="name">controlUsuarios window</field>
+      <field name="res_model">control_usuarios.control_usuarios</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="control_usuarios.action_server">
+      <field name="name">controlUsuarios server</field>
+      <field name="model_id" ref="model_control_usuarios_control_usuarios"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="controlUsuarios" id="control_usuarios.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="control_usuarios.menu_1" parent="control_usuarios.menu_root"/>
+    <menuitem name="Menu 2" id="control_usuarios.menu_2" parent="control_usuarios.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="control_usuarios.menu_1_list" parent="control_usuarios.menu_1"
+              action="control_usuarios.action_window"/>
+    <menuitem name="Server to list" id="control_usuarios" parent="control_usuarios.menu_2"
+              action="control_usuarios.action_server"/>
+-->
+
+<!-- Vistas de Gimnasio -->
+
+    <record model="ir.ui.view" id="control_usuarios.gimnasio_list_view">
+      <field name="name">control_usuarios.gimnasio.view.tree</field>
+      <field name="model">control_usuarios.gimnasio</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="numero_clientes"/>
+          <field name="numero_aparatos"/>
+          <field name="numero_entrenadores"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="control_usuarios.gimnasio_form_view" model="ir.ui.view">
+  <field name="name">control_usuarios.gimnasio.view.form</field>
+  <field name="model">control_usuarios.gimnasio</field>
+  <field name="arch" type="xml">
+  <form string="Formulario sobre el Gimnasio">
+  <sheet>
+  <separator string="Información General"/>
+    <group>
+        <group>
+            <field name="numero_clientes"/>
+            <field name="numero_aparatos"/>
+            <field name="numero_entrenadores"/>
+        </group>
+        <group>
+        
+            <field name="clientes_id" style="width:90.5%%" width = "90.5"/>
+        </group>
+        </group>
+  </sheet>
+</form>
+</field>
+  </record>
+
+  <record id="control_usuarios.gimnasio_view_graph" model="ir.ui.view">
+
+    <field name="model">control_usuarios.gimnasio</field>
+    <field name = "arch" type = "xml">
+    <graph string = "Seguimiento del Gimnasio">
+      
+      <field name="numero_clientes"/>
+      <field name="numero_aparatos"/>
+      <field name="numero_entrenadores"/>
+
+    </graph>
+
+    </field>
+  </record>
+
+<!-- Vistas de Clientes -->
+
+    <record model="ir.ui.view" id="control_usuarios.clientes_list_view">
+      <field name="name">control_usuarios.clientes.view.tree</field>
+      <field name="model">control_usuarios.clientes</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre_id"/>
+          <field name="edad"/>
+          <field name="peso"/>
+          <field name="altura"/>
+          <field name="dni"/>
+          <field name="direccion"/>
+          <field name="ciudad"/>
+          <field name="codigoPostal"/>
+          <field name="pais"/>
+          <field name="email"/>
+          <field name="fechaRegistro"/>
+          <field name="lesionado"/>
+          <field name="image" widget = "image"/>
+        </tree>
+      </field>
+    </record> 
+
+    <record id="control_usuarios.clientes_form_view" model="ir.ui.view">
+  <field name="name">control_usuarios.clientes.view.form</field>
+  <field name="model">control_usuarios.clientes</field>
+  <field name="arch" type="xml">
+  <form string="Formulario sobre el Cliente">
+  <sheet>
+          <separator string = "Información del Cliente"/>
+  <group>
+        <group>
+                                <field name="nombre_id" placeholder="Nombre"/>
+                                <field name="edad" placeholder="Edad"/>
+                                <field name="peso" placeholder="Peso"/>
+                                <field name="altura" placeholder="Altura"/>
+                                <field name="dni" placeholder="DNI"/>
+                                <field name="direccion" placeholder="Dirección"/>
+                                <field name="email" placeholder="Correo Electrónico"/>
+        </group>
+        <group>
+                                <field name="ciudad" placeholder="Ciudad"/>
+                                <field name="codigoPostal" placeholder="Código Postal"/>
+                                <field name="pais" placeholder="País"/>
+                                <field name="fechaRegistro" placeholder="Fecha De Registro"/>
+                                <field name="lesionado" placeholder="¿Está lesionado?"/>
+                                <field name="image"/>
+                                </group>
+                                </group>
+</sheet>
+</form>
+</field>
+  </record> 
+
+<record id="control_usuarios.clientes_kanban_view" model="ir.ui.view">
+            <field name="name">control_usuarios.clientes.view.kanban</field>
+            <field name="model">control_usuarios.clientes</field>
+            <field name="arch" type="xml">
+                <kanban>
+                <field name="nombre_id" placeholder="Nombre"/>
+                <field name="ciudad" placeholder="Ciudad"/>
+                <field name="codigoPostal" placeholder="Código Postal"/>
+                <field name="pais" placeholder="País"/>
+                <field name="fechaRegistro" placeholder="Fecha De Registro"/>
+                <field name="image"/>
+
+                <templates>
+                <t t-name = "kanban-box">
+                  <div class = "oe_kanban_global_click">
+                <div class = "oe_kanban_details">
+                  <div class = "o_kanban_record_top">
+                  <div class = "o_kanban_record_headings">
+                  <strong class = "o_kanban_record_title oe_partner_heading">
+                    Nombre: <field name = "nombre_id"/>
+                  </strong>
+                  <ul>
+                  <li>
+                    Edad: <field name="edad"/>
+                  </li>
+                  <li>
+                    Fecha De Registro: <field name="fechaRegistro"/>
+                  </li>
+                  <li>
+                    Correo Electrónico: <field name="email"/>
+                  </li>
+                  </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </t>
+                </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+<record model="ir.ui.view" id="control_usuarios.clientes_search_view">
+      <field name="name">control_usuarios.clientes.view.search</field>
+      <field name="model">control_usuarios.clientes</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="edad"/>
+          <field name="peso"/>
+          <field name="altura"/>
+          <field name="direccion"/>
+          <field name="codigoPostal"/>
+          <field name="pais"/>
+          <field name="lesionado"/>
+          <filter name="ciudad" string="Ciudad" domain="[('ciudad', '=', True)]"/>
+          <group>
+          <filter name="group_by_ciudad" string="Ciudad" context="{'group_by':'ciudad'}"/>
+          </group>
+        </search>
+      </field>
+    </record> 
+
+<!-- Vistas de Control -->
+
+    <record model="ir.ui.view" id="control_usuarios.control_list_view">
+      <field name="name">control_usuarios.control.view.tree</field>
+      <field name="model">control_usuarios.control</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombreEntrenador_id"/>
+          <field name="telefonoEntrenador"/>
+          <field name="dietaSeleccionada"/>
+          <field name="estado"/>
+          <field name="ingesta"/>
+          <field name="fechaGestion"/>
+          <field name="aparato"/>
+        </tree>
+      </field>
+    </record>  
+
+
+<record id="control_usuarios.control_form_view" model="ir.ui.view">
+  <field name="name">control_usuarios.control.view.form</field>
+  <field name="model">control_usuarios.control</field>
+  <field name="arch" type="xml">
+  <form string="Formulario sobre el Cliente">
+  <sheet>
+  <separator string = "Necesidades del Cliente"/>
+  <group>
+        <group>
+        <field name="nombreEntrenador_id" placeholder="Nombre Entrenador"/>
+        <field name="telefonoEntrenador" placeholder="Teléfono Entrenador"/>
+        <field name="dietaSeleccionada" placeholder="Tipo De Dieta"/>
+        <field name="estado" placeholder="Tipo de Peso"/>
+        </group>
+
+        <group>
+        <field name="ingesta" placeholder="Ingesta Calórica"/>
+        <field name="fechaGestion" placeholder="Fecha de Comienzo de Entrenamiento"/>
+        <field name="aparato" placeholder="Tipo de maquinaria a usar"/>
+        </group>
+
+        <notebook>
+        <page name="description" string = "Clientes">
+        <group>
+        
+            <field name="clientes_ids" style="width:93.5%%" width = "93.5"/>
+        </group>
+        </page>
+        </notebook>
+        </group>
+</sheet>
+</form>
+</field>
+  </record> 
+
+   <record model="ir.ui.view" id="control_usuarios.control_calendar_view">
+      <field name="name">control_usuarios.control.view.calendar</field>
+      <field name="model">control_usuarios.control</field>
+      <field name="arch" type="xml">
+        <calendar string = "Calendario de Gestiones" date_start = "fechaGestion" color = "estado" mode = "day">
+          <field name="nombreEntrenador_id"/>
+          <field name="telefonoEntrenador"/>
+          <field name="dietaSeleccionada"/>
+          <field name="estado"/>
+          <field name="ingesta"/>
+          <field name="aparato"/>
+        </calendar>
+      </field>
+    </record>  
+
+
+    <record model="ir.ui.view" id="control_usuarios.control_search_view">
+      <field name="name">control_usuarios.control.view.search</field>
+      <field name="model">control_usuarios.control</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="dietaSeleccionada" widget="selection"/>
+          <group>
+          <filter name="group_by_dietaSeleccionada" string = "Dieta Seleccionada" context= "{'group_by_dietaSeleccionada':'dietaSeleccionada'}"/>
+          </group>
+        </search>
+      </field>
+    </record>  
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="control_usuarios.gimnasio_action_window">
+      <field name="name">Registros De Gimnasio</field>
+      <field name="res_model">control_usuarios.gimnasio</field>
+      <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="control_usuarios.clientes_action_window">
+      <field name="name">Clientes</field>
+      <field name="res_model">control_usuarios.clientes</field>
+      <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="control_usuarios.control_action_window">
+      <field name="name">Controles</field>
+      <field name="res_model">control_usuarios.control</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="context">{'search_default_group_by_dietaSeleccionada':False}</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Gestión de Clientes" id="control_usuarios.menu_root" web_icon = "control_usuarios, static/description/icon.png"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Gimnasio" id="control_usuarios.gimnasio_menu" parent="control_usuarios.menu_root" action="control_usuarios.gimnasio_action_window"/>
+    <menuitem name="Clientes" id="control_usuarios.clientes_menu" parent="control_usuarios.menu_root" action="control_usuarios.clientes_action_window"/>
+    <menuitem name="Controles" id="control_usuarios.control_menu" parent="control_usuarios.menu_root" action="control_usuarios.control_action_window"/>
+
+  </data>
+</odoo>

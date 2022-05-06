@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<odoo>
+    <data>
+
+    <!-- Definir categoria de seguridad para el módulo -->
+
+        <record model = "ir.module.category" id = "control_usuarios.module_category_control_usuarios">
+        <field name = "name">Control Usuarios</field>
+        <field name = "description">Necesidades de los clientes</field>
+        <field name = "sequence">100</field>
+        </record>
+
+        <record model = "res.groups" id = "group_control_usuarios_usuario">
+        <field name = "name">Usuario</field>
+        <field name = "category_id" ref = "control_usuarios.module_category_control_usuarios"/>
+        <field name = "comment">Gimnasio que gestiona usuarios por entrenadores</field>
+        </record>
+
+        <record model = "res.groups" id = "group_control_usuarios_dueño">
+        <field name = "name">Dueño</field>
+        <field name = "category_id" ref = "control_usuarios.module_category_control_usuarios"/>
+        <field name = "comment">Dueño que gestiona usuarios por entrenadores</field>
+
+        <!-- Los usuarios del grupo son miembros de los usuarios-->
+        <field name = "implied_ids" eval = "[(4, ref('group_control_usuarios_usuario'))]"/>
+        
+        <!-- Añadir a los usuarios administradores de odoo-->
+
+        <field name = "users" eval = "[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+</data>
+</odoo>

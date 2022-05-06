@@ -1,0 +1,123 @@
+<odoo>
+    <data>
+<!--
+          <record id="object0" model="control_usuarios.control_usuarios">
+            <field name="name">Object 0</field>
+            <field name="value">0</field>
+          </record>
+
+          <record id="object1" model="control_usuarios.control_usuarios">
+            <field name="name">Object 1</field>
+            <field name="value">10</field>
+          </record>
+
+          <record id="object2" model="control_usuarios.control_usuarios">
+            <field name="name">Object 2</field>
+            <field name="value">20</field>
+          </record>
+
+          <record id="object3" model="control_usuarios.control_usuarios">
+            <field name="name">Object 3</field>
+            <field name="value">30</field>
+          </record>
+
+          <record id="object4" model="control_usuarios.control_usuarios">
+            <field name="name">Object 4</field>
+            <field name="value">40</field>
+          </record>
+-->
+
+    <record id = "gimnasio1" model = "control_usuarios.gimnasio">
+    <field name = "numero_clientes">5</field>
+    <field name = "numero_aparatos">20</field>
+    <field name = "numero_entrenadores">3</field>
+    </record>
+
+    <record id = "gimnasio2" model = "control_usuarios.gimnasio">
+    <field name = "numero_clientes">10</field>
+    <field name = "numero_aparatos">30</field>
+    <field name = "numero_entrenadores">4</field>
+    </record>
+
+    <record id = "gimnasio3" model = "control_usuarios.gimnasio">
+    <field name = "numero_clientes">30</field>
+    <field name = "numero_aparatos">50</field>
+    <field name = "numero_entrenadores">3</field>
+    </record>
+
+    <record id = "clientes1" model = "control_usuarios.clientes">
+    <field name = "nombre">Jesús García</field>
+    <field name = "edad">20</field>
+    <field name = "peso">59</field>
+    <field name = "altura">1.68</field>
+    <field name = "dirección">Calle Pérez Número 80</field>
+    <field name = "ciudad">San José De La Rinconada</field>
+    <field name = "codigoPostal">65367</field>
+    <field name = "pais">España</field>
+    <field name = "fechaRegistro">2021-21-05</field>
+    <field name = "lesionado">False</field>
+    <field name = "email">jesus12343@gmail.com</field>
+    <field name = "telefono">655413905</field>
+    </record>
+
+    <record id = "clientes2" model = "control_usuarios.clientes">
+    <field name = "nombre">Pablo Pérez</field>
+    <field name = "edad">41</field>
+    <field name = "peso">80</field>
+    <field name = "altura">1.57</field>
+    <field name = "dirección">Calle Luis Número 20</field>
+    <field name = "ciudad">San José De La Rinconada</field>
+    <field name = "codigoPostal">65367</field>
+    <field name = "pais">España</field>
+    <field name = "fechaRegistro">2020-01-10</field>
+    <field name = "lesionado">True</field>
+    <field name = "email">pablo_perepp13@gmail.com</field>
+    <field name = "telefono">613404501</field>
+    </record>
+
+    <record id = "clientes3" model = "control_usuarios.clientes">
+    <field name = "nombre">Carmen Rosado</field>
+    <field name = "edad">18</field>
+    <field name = "peso">60</field>
+    <field name = "altura">1.70</field>
+    <field name = "dirección">Calle Lomana Número 10</field>
+    <field name = "ciudad">Sevilla</field>
+    <field name = "codigoPostal">25858</field>
+    <field name = "pais">España</field>
+    <field name = "fechaRegistro">2022-03-11</field>
+    <field name = "lesionado">False</field>
+    <field name = "email">ccrm_rosado@gmail.com</field>
+    <field name = "telefono">633105600</field>
+    </record>
+
+    <record id = "control1" model = "control_usuarios.control">
+    <field name = "nombreEntrenador">Juan Francisco</field>
+    <field name = "telefonoEntrenador">634491123</field>
+    <field name = "dietaSeleccionada">V</field>
+    <field name = "estado">N</field>
+    <field name = "ingesta">1500</field>
+    <field name = "fechaGestion">2021-10-07</field>
+    <field name = "aparato">M</field>
+    </record>
+
+    <record id = "control2" model = "control_usuarios.control">
+    <field name = "nombreEntrenador">Pepe López</field>
+    <field name = "telefonoEntrenador">634351345</field>
+    <field name = "dietaSeleccionada">V</field>
+    <field name = "estado">O</field>
+    <field name = "ingesta">1000</field>
+    <field name = "fechaGestion">2021-09-01</field>
+    <field name = "aparato">E</field>
+    </record>
+
+    <record id = "control3" model = "control_usuarios.control">
+    <field name = "nombreEntrenador">Maite</field>
+    <field name = "telefonoEntrenador">622103341</field>
+    <field name = "dietaSeleccionada">M</field>
+    <field name = "estado">N</field>
+    <field name = "ingesta">1200</field>
+    <field name = "fechaGestion" eval = "datetime.now()"></field>
+    <field name = "aparato">M</field>
+    </record>
+    </data>
+</odoo>

@@ -1,0 +1,87 @@
+<odoo>
+
+<record id = "control_usuarios.gimnasio_report" model = "ir.actions.report">
+<field name = "name">Informe De Clientes</field>
+<field name = "model">control_usuarios.gimnasio</field>
+<field name = "report_type">qweb-pdf</field>
+<field name = "report_name">control_usuarios.gimnasio_report_view</field>
+<field name = "report_file">control_usuarios.gimnasio_report</field>
+<field name="binding_model_id" ref="model_control_usuarios_gimnasio"/>
+<field name="binding_type">report</field>
+</record>
+
+
+<template id = "gimnasio_report_view">
+<t t-call = "web.html_container">
+<t t-foreach = "docs" t-as="gimnasio">
+<t t-call = "web.external_layout">
+<div class = "page">
+<h2>Informaciones de clientes registrados</h2>
+<table class = "table table-sm o_main_table">
+    <thead>
+    <tr>
+    <th>Nombre</th>
+    <th>DNI</th>
+    <th>Dirección</th>
+    <th>Ciudad</th>
+    <th>Código Postal</th>
+    <th>País</th>
+    <th>Fecha De Registro</th>
+    <th>Correo Electrónico</th>
+    <th>Teléfono</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <t t-foreach = "gimnasio.clientes_id" t-as = "clientes">
+
+    <tr>
+
+    <td>
+        <span t-field="clientes.nombre_id"/>
+    </td>
+
+    <td>
+        <span t-field="clientes.dni"/>
+    </td>
+
+   <td>
+        <span t-field="clientes.direccion"/>
+    </td>
+
+    <td>
+        <span t-field="clientes.ciudad"/>
+    </td>
+    
+    <td>
+        <span t-field="clientes.codigoPostal"/>
+    </td>
+
+    <td>
+        <span t-field="clientes.pais"/>
+    </td>
+
+    <td>
+        <span t-field="clientes.fechaRegistro"/>
+    </td>
+
+    <td>
+        <span t-field="clientes.email"/>
+    </td>
+
+     <td>
+        <span t-field="clientes.telefono"/>
+    </td>
+
+    </tr>
+    </t>
+    </tbody>
+
+
+</table>
+</div>
+</t>
+</t>
+</t>
+</template>
+</odoo>
